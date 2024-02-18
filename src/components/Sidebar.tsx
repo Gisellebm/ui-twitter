@@ -2,6 +2,9 @@ import twitterLogo from '../assets/logo.svg'
 import { Bell, BookmarkSimple, DotsThreeCircle, Envelope, FileText, Hash, House, User } from 'phosphor-react'
 
 import './Sidebar.css'
+import { NavLink } from 'react-router-dom'
+
+// contexto -> existem locais em que eu consigo ter acesso a informações e locais que não consigo ter acesso a informações
 
 export function Sidebar() {
     return (
@@ -9,9 +12,9 @@ export function Sidebar() {
         <img src={twitterLogo} alt="Logo" className='logo'/>
 
         <nav className='main-navigation'>
-          <a className='active' href="">
+          <NavLink to="/">
             <House weight='fill' /> Home
-          </a>
+          </NavLink>
 
           <a href="">
             <Hash />
