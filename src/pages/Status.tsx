@@ -5,7 +5,17 @@ import { Tweet } from "../components/Tweet"
 
 import './Status.css'
 
+/**
+ *Fluxo de renderização:
+ * 1. Toda vez que alteramos o estdaao de um componente, todo o componente vai ser renderizado (recalculado)
+ * 2. Toda vez que o seu componente pai renderizar
+ * 3. Toda vez que alguma das suas propriedades mudarem
+ */
 
+ // Algoritmo de reconciliação
+ // 1. Cria em memória uma nova versão do HTML do componente
+ // 2. Compara essa nova versão com a versão anterior do HTML (diff)
+ // 3.  Aplica as operações javascript para alterar somente o necessário no HTML
 
 export function Status() {
   const [newAnswer, setNewAnswer] = useState('')
@@ -16,8 +26,15 @@ export function Status() {
     
     setAnswers([newAnswer, ...answers]) // spread operator (desestruturação de object)
     setNewAnswer('')
-    
   }
+
+  function handleHotKeySubmit(event: React.KeyboardEvent) {
+    if (event.key === 'Enter' && (event.ctrlKey || event.metaKey)) {
+      setAnswers([newAnswer, ...answers]) // spread operator (desestruturação de object)
+      setNewAnswer('')
+    }
+  }
+
     return (
         <main className="status">
         <Header title='Tweet' />
@@ -33,6 +50,7 @@ export function Status() {
               id="tweet" 
               placeholder='Tweet your answer' 
               value={newAnswer}
+              onKeyDown={handleHotKeySubmit}
               onChange={event => {
                 setNewAnswer(event.target.value)
               }}
