@@ -25,6 +25,11 @@
     font-weight: 900;
     border: 0;
 }
+
+.sidebar .new-tweet svg { 
+    display: none;
+}
+
 .sidebar .new-tweet:hover {
     filter: brightness(0.9);
 }
@@ -52,5 +57,30 @@
 .main-navigation a svg {
     width: 2rem;
     height: 2rem;
-    
+}
+
+@media (max-width: 780px) {
+    .sidebar {
+        padding: 1.5rem 0.75rem;
+        align-items: center;
+    }
+
+    .sidebar .new-tweet span {
+        display: none;
+    }
+
+    .sidebar .new-tweet svg {
+        display: block;
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+
+    .main-navigation a span {
+        display: none;    
+    }
+
+    .main-navigation a svg {
+        width: 1.5rem;
+        height: 1.5rem;
+    }
 }
